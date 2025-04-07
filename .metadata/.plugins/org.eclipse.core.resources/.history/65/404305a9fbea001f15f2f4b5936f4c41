@@ -1,0 +1,11 @@
+package com.Main.Service;
+
+import org.springframework.stereotype.Repository;
+
+import com.Main.DTO.UserDTO;
+
+@Repositoryo
+public interface UserService {
+	
+	public UserDTO registerUser(UserDTO userDTO) throws Exception;
+}

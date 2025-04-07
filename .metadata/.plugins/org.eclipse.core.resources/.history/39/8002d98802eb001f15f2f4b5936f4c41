@@ -1,0 +1,9 @@
+spring.application.name=Job_Portal_Backend
+
+spring.data.mongodb.auto-index-creation=true
+spring.data.mongodb.uri=mongodb://localhost:27017/jobportal
+
+
+
+USER_FOUND=User is already present in the system
+USER_NOT_FOUND=User is not present in the system

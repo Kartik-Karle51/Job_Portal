@@ -1,0 +1,8 @@
+package com.Main.Service;
+
+import com.Main.DTO.UserDTO;
+
+public interface UserService {
+	
+	public UserDTO registerUser(UserDTO userDTO) throws Exception;
+}
