@@ -1,8 +1,0 @@
-package com.Main.DTO;
-
-public class LoginDTO {
-
-	private String email;
-	
-	private String password;
-}

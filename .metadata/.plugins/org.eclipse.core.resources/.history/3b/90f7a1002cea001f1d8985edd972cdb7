@@ -1,5 +1,0 @@
-package com.Main.Repository;
-
-public interface UserRepository {
-
-}
