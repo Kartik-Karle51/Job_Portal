@@ -20,7 +20,7 @@ const TalentCard = (props:any) => {
       </div>
       <div className='flex gap-2 [&>div]:py-1 [&>div]:px-2 [&>div]:bg-mine-shaft-800 [&>div]:text-bright-sun-400 [&>div]:rounded-lg text-xs'>
       {props.topSkills?.map((skill:any,index:any)=>(
-          <div>{skill}</div>
+          <div key={index}>{skill}</div>
         ))}
       </div>
       <Text lineClamp={3} className='!text-xs text-justify !text-mine-shaft-300'>

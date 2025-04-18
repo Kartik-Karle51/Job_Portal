@@ -6,6 +6,7 @@ import Profile from '../TalentProfile/Profile'
 import { profile } from '../Data/Talentdata'
 import RecommendedTalent from '../TalentProfile/RecommendedTalent'
 import JobDesc from '../JobDesc/JobDesc'
+import RecommendedJobs from '../JobDesc/RecommendedJobs'
 
 
 const JobDescPage = () => {
@@ -15,8 +16,9 @@ const JobDescPage = () => {
             <Link to="/find-jobs" className='my-4 inline-block'>
                 <Button leftSection={<IconArrowLeft size={20} />} color='bright-sun.4' variant='light'>Back</Button>
             </Link>
-            <div className='flex gap-5 '>
+            <div className='flex gap-5 justify-around'>
 <JobDesc />
+<RecommendedJobs />
             </div>
         </div>
     )

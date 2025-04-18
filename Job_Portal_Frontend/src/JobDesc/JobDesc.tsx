@@ -48,7 +48,7 @@ const JobDesc = () => {
         <div className='flex flex-wrap gap-2'>
           {
             skills.map((skill, index) =>
-              <ActionIcon color='bright-sun.4' className='!h-fit !w-fit font-medium !text-sm' variant='light' radius="xl" p="xs" aria-label='Settings' key="index">
+              <ActionIcon color='bright-sun.4' className='!h-fit !w-fit font-medium !text-sm' variant='light' radius="xl" p="xs" aria-label='Settings' key={index}>
                 {skill}
               </ActionIcon>
             )
@@ -73,12 +73,12 @@ const JobDesc = () => {
                 <div className='text-mine-shaft-300'>10K+ Employees</div>
               </div>
             </div>
-            <Link to="">
+            <Link to="/company">
               <Button color='bright-sun.4' variant='light'>Company Page</Button>
             </Link>
           </div>
-          <div className='text-mine-shaft-300'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore totam inventore sapiente distinctio officiis libero adipisci modi, omnis rerum quaerat cum optio neque animi perspiciatis, impedit doloribus sunt eum ad!
+          <div className='text-mine-shaft-300 text-justify'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore totam inventore sapiente distinctio officiis libero adipisci modi, omnis rerum quaerat cum optio neque animi perspiciatis, impedit doloribus sunt eum ad! Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta eaque quo ex expedita numquam placeat, temporibus voluptatibus tempore hic earum autem dolore laudantium amet illo, dicta quas, assumenda nulla harum?
           </div>
         </div>
       </div>
