@@ -44,5 +44,11 @@ public class UserServiceImpl implements UserService{
 		return user.toDTO();
 	}
 
+	@Override
+	public UserDTO getUserByEmail(String email) throws JobPortalException {
+		// TODO Auto-generated method stub
+		return userRepository.findByEmail(email).orElseThrow(() -> new JobPortalException("User Not found")).toDTO();
+	}
+
 	
 }
