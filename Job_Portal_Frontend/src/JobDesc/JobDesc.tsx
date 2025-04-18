@@ -6,7 +6,7 @@ import { card, desc, skills } from '../Data/JobDescData'
 import DOMPurify from "dompurify"
 
 
-const JobDesc = () => {
+const JobDesc = (props:any) => {
   const data = DOMPurify.sanitize(desc); {/*DOMPurify takes raw HTML and cleans out any scripts, malicious attributes, or tags that could be used for XSS attacks, without affecting safe formatting. */ }
   return (
     <div className='w-2/3'>
@@ -22,10 +22,10 @@ const JobDesc = () => {
         </div>
         <div className='flex flex-col gap-2 items-center'>
           <Link to="/apply-jobs">
-            <Button color='bright-sun.4' size='sm' variant='light'>Apply</Button>
+            <Button color='bright-sun.4' size='sm' variant='light'>{props.edit?"Edit":"Apply"}</Button>
           </Link>
 
-          <IconBookmark className='text-bright-sun-400 cursor-pointer' />
+          {props.edit? <Button color='red.5' size='sm' variant='light'>Delete</Button>:<IconBookmark className='text-bright-sun-400 cursor-pointer' />}
         </div>
 
       </div>
