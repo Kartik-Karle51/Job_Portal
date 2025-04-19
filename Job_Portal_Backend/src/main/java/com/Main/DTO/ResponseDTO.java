@@ -1,15 +1,14 @@
 package com.Main.DTO;
 
 import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@static @Data
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-public class LoginDTO {
-
-	private String email;
+@NoArgsConstructor
+public class ResponseDTO {
+	String message;
 	
-	private String password;
 }
