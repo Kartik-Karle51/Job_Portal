@@ -1,11 +1,16 @@
 import { IconBrandFacebook, IconBrandInstagram, IconBrandWhatsapp, IconBriefcase } from '@tabler/icons-react'
 import React from 'react'
 import Data from '../Data/Data';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+    const location=useLocation();
     const {footerLinks}=Data();
-  return (
-    <div className="pt-20 pb-5 flex gap-5 justify-around bg-mine-shaft-950 font-['poppins']">
+    
+    return location.pathname!="/signup" && location.pathname!="/login" ? <div className="w-full bg-mine-shaft-950 px-6 text-white h-20 
+    flex justify-between items-center font-['poppins']">
+
+   
         <div className='w-1/4 flex flex-col gap-4'>
         <div className="flex gap-1 items-center text-bright-sun-400">
             <IconBriefcase className="h-6 w-6" stroke={2.5} />
@@ -29,8 +34,8 @@ const Footer = () => {
                 
                 </div>)
         }
-    </div>
-  )
+        
+  </div>:<></>
 }
 
 export default Footer
