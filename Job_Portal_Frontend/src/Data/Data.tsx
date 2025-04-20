@@ -95,7 +95,13 @@ const Data = () => {
         }
     ];
     
-    return { companies, jobCategory, work, testimonials };
+    const footerLinks =[
+        {title:"Product",links:["Find Job","Find Company","Find Employee"]},
+        {title:"Company",links:["About us","Contact Us","Privacy Policy","Terms & Conditions"]},
+        {title:"Support",links:["Help & Support","Feedback","FAQs"]}
+    ]
+    
+    return { companies, jobCategory, work, testimonials,footerLinks };
 };
 
 export default Data;

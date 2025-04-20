@@ -1,6 +1,7 @@
 package com.Main.Service;
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ import com.Main.Entity.OTP;
 import com.Main.Entity.User;
 import com.Main.Exception.JobPortalException;
 import com.Main.Repository.OTPReposiotry;
-import com.Main.Repository.OTPRepository;
+//import com.Main.Repository.OTPRepository;
 import com.Main.Repository.UserRepository;
 import com.Main.Utility.Data;
 import com.Main.Utility.Utilities;
@@ -40,6 +41,9 @@ public class UserServiceImpl implements UserService{
 	private JavaMailSender mailSender;
 	
 	@Autowired
+	private ProfileService profileService;
+	
+	@Autowired
 	private OTPReposiotry otpRepository;
 	
 	@Autowired
@@ -49,7 +53,7 @@ public class UserServiceImpl implements UserService{
 	public UserDTO registerUser(UserDTO userDTO) throws Exception {
 		Optional<User> optional=userRepository.findByEmail(userDTO.getEmail());
 		if(optional.isPresent())throw new JobPortalException("USER_FOUND");
-		userDTO.setId(utilities.getNextSequence("users"));
+		userDTO.setProfileId(profileService.createProfile(userDTO.getEmail()));		userDTO.setId(utilities.getNextSequence("users"));
 		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		User user=userDTO.toEntity();
 		user=userRepository.save(user);

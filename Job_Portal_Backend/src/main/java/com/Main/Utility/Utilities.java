@@ -29,7 +29,7 @@ public class Utilities {
     	Utilities.mongoOperation=mongoOperation;
     }
 
-    public Long getNextSequence(String key) throws Exception {
+    public static Long getNextSequence(String key) throws Exception {
         Query query = new Query(Criteria.where("_id").is(key));
         Update update = new Update().inc("seq", 1);
         FindAndModifyOptions options = new FindAndModifyOptions().returnNew(true);
