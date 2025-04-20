@@ -17,7 +17,7 @@ import com.Main.Service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@CrossOrigin
+
 @RequestMapping("/users")
 @Validated
 public class UserAPI {
