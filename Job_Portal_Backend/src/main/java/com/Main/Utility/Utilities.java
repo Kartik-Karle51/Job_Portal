@@ -14,14 +14,14 @@ import com.Main.Exception.JobPortalException;
 @Component
 public class Utilities {
 
-    private final MongoOperations mongoOperation;
+    private static MongoOperations mongoOperation;
 
     @Autowired
     public Utilities(MongoOperations mongoOperation) {
         this.mongoOperation = mongoOperation;
     }
 
-    public Long getNextSequence(String key) throws Exception {
+    public static Long getNextSequence(String key) throws JobPortalException {
         Query query = new Query(Criteria.where("_id").is(key));
         Update update = new Update().inc("seq", 1);
         FindAndModifyOptions options = new FindAndModifyOptions().returnNew(true);
