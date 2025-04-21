@@ -34,8 +34,7 @@ public class UserServiceImpl implements UserService{
 	private PasswordEncoder passwordEncoder;
 	
 	
-	@Autowired 
-	private Utilities utilities;
+	
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -50,10 +49,12 @@ public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 	
 	@Override
-	public UserDTO registerUser(UserDTO userDTO) throws Exception {
+	public UserDTO registerUser(UserDTO userDTO) throws JobPortalException {
 		Optional<User> optional=userRepository.findByEmail(userDTO.getEmail());
 		if(optional.isPresent())throw new JobPortalException("USER_FOUND");
+
 		userDTO.setProfileId(profileService.createProfile(userDTO.getEmail()));		userDTO.setId(utilities.getNextSequence("users"));
+
 		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		User user=userDTO.toEntity();
 		user=userRepository.save(user);
