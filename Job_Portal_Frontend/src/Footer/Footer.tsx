@@ -7,8 +7,7 @@ const Footer = () => {
     const location=useLocation();
     const {footerLinks}=Data();
     
-    return location.pathname!="/signup" && location.pathname!="/login" ? <div className="w-full bg-mine-shaft-950 px-6 text-white h-20 
-    flex justify-between items-center font-['poppins']">
+    return location.pathname!="/signup" && location.pathname!="/login" ? <div className="pt-20 pb-5 flex gap-5 justify-around bg-mine-shaft-950 font-['poppins']">
 
    
         <div className='w-1/4 flex flex-col gap-4'>
