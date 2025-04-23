@@ -78,7 +78,7 @@ const Login=()=>
                 label="Password" placeholder='Password'/>
     
                 
-                <Button onClick={handleSubmit} autoContrast variant="filled">Sign up</Button>
+                <Button onClick={handleSubmit} autoContrast variant="filled">Login</Button>
                 <div>Dont have an account? <span onClick={()=>{navigate("/signup");setFormError(form); setData(form)}} 
                 className="text-bright-sun-400 hover:uderline cursor-pointer">SignUp</span></div>
             </div>
