@@ -11,17 +11,21 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.Main.Exception.JobPortalException;
+import com.Main.Service.UserService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
+import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class JwtAuthentication extends OncePerRequestFilter {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+	
 	@Autowired
 	private JwtHelper jwtHelper;
 	
@@ -71,22 +75,5 @@ public class JwtAuthentication extends OncePerRequestFilter {
 		filterChain.doFilter(request,response);
 	}
 
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -3,6 +3,8 @@ package com.Main.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -23,9 +25,9 @@ public class JwtHelper {
     }
 
     // Generate Token
-    public String generateToken(String username) {
+    public String generateToken(UserDetails userDetalis) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(userDetalis.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
