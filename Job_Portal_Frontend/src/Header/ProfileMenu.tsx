@@ -1,7 +1,10 @@
 import { Menu, Button, Text, Avatar } from '@mantine/core';
 import { Switch } from '@mantine/core';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 import { IconSun, IconMoon, IconLogout2 } from '@tabler/icons-react';
 import {
   IconSettings,

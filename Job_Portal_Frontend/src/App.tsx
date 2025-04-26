@@ -8,7 +8,11 @@ import '@mantine/dates/styles.css';
 import '@mantine/carousel/styles.css';
 import '@mantine/notifications/styles.css';
 import HomePage from './Pages/HomePage';
+<<<<<<< HEAD
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+=======
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 import FindJobs from './Pages/FindJobs';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
@@ -23,16 +27,22 @@ import JobHistoryPage from './Pages/JobHistoryPage';
 import SignUpPage from './Pages/SignUpPage';
 import ProfilePage from './Pages/profilePage';
 import { Notifications } from '@mantine/notifications';
+<<<<<<< HEAD
 import Store from './Store';
 import { Provider } from 'react-redux';
 import { getItem } from './Services/LocalStorageService';
 import AppRoutes from './Pages/AppRoutes';
+=======
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 
 
 
 
 function App() {
+<<<<<<< HEAD
   
+=======
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
   const theme=createTheme({
     focusRing:"never",
     primaryColor:"bright-sun",
@@ -45,6 +55,7 @@ function App() {
     },
     fontFamily:"poppins, sans-serif"
   })
+<<<<<<< HEAD
   const user=getItem("user");
   return (
 
@@ -56,6 +67,42 @@ function App() {
       <AppRoutes/>
   </MantineProvider>
   </Provider>
+=======
+  return (
+
+   
+    <MantineProvider defaultColorScheme='dark' theme={theme}>
+    
+    <Notifications position="top-center" zIndex={2077} />
+      <BrowserRouter>
+      <div className='relative'>
+      <Header />
+      <Divider size="xs" mx="md"/>
+      <Routes>
+      <Route path='/find-jobs' element={<FindJobs/>}/>
+      <Route path='/find-talent' element={<FindTalentPage/>}/>
+      <Route path='/post-job' element={<PostJobPage/>}/>
+      
+      <Route path='/jobs' element={<JobDescPage/>}/>
+      <Route path='/apply-jobs' element={<ApplyJobPage/>}/>
+      <Route path='/company' element={<CompanyPage/>}/>
+      <Route path='/posted-jobs' element={<PostedJobs/>}/>
+      <Route path='/signup' element={<SignUpPage/>}/>
+      <Route path='/login' element={<SignUpPage/>}/>
+      <Route path='/profile' element={<ProfilePage/>}/>
+
+      <Route path='/job-history' element={<JobHistoryPage/>}/>
+      
+      
+      <Route path='/talent-profile' element={<TalentProfilePage/>}/>
+        <Route path='*' element={<HomePage/>}/>
+
+      </Routes>
+      <Footer />
+      </div>
+  </BrowserRouter>
+  </MantineProvider>
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
   );
 }
 

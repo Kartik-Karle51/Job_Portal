@@ -7,11 +7,17 @@
     "@mantine/carousel": "^7.17.4",
     "@mantine/core": "^7.17.4",
     "@mantine/dates": "^7.17.4",
+<<<<<<< HEAD
     "@mantine/form": "^7.17.4",
     "@mantine/hooks": "^7.17.4",
     "@mantine/notifications": "^7.17.4",
     "@mantine/tiptap": "^7.17.4",
     "@reduxjs/toolkit": "^2.7.0",
+=======
+    "@mantine/hooks": "^7.17.4",
+    "@mantine/notifications": "^7.17.4",
+    "@mantine/tiptap": "^7.17.4",
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
     "@tabler/icons-react": "^3.30.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -37,10 +43,15 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
+<<<<<<< HEAD
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
+=======
+    "react-router-dom": "^7.1.5",
+    "react-scripts": "5.0.1",
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
     "tabler-icons-react": "^1.56.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
