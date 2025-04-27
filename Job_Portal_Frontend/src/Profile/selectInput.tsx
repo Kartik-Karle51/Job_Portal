@@ -6,8 +6,8 @@ import { Combobox, InputBase, ScrollArea, useCombobox } from '@mantine/core';
 const SelectInput=(props:any)=> {
     useEffect(()=>{
 setData(props.options)
-setValue(props.value);
-setSearch(props.value);
+setValue(props.form.getInputProps(props.name).value);
+setSearch(props.form.getInputProps(props.name).value);
     },[])
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -36,16 +36,18 @@ setSearch(props.value);
         if (val === '$create') {
           setData((current) => [...current, search]);
           setValue(search);
+          props.form.setFieldValue(props.name,search);
         } else {
           setValue(val);
           setSearch(val);
+          props.form.setFieldValue(props.name,value);
         }
 
         combobox.closeDropdown();
       }}
     >
       <Combobox.Target>
-        <InputBase
+        <InputBase {...props.form.getInputprops(props.name)}
         leftSection={<props.leftSection stroke={1.5}/>}
           rightSection={<Combobox.Chevron />}
           value={search}
@@ -71,7 +73,7 @@ setSearch(props.value);
         <Combobox.Options>
             <ScrollArea.Autosize mah={200} type='scroll'>
           {options}
-          {!exactOptionMatch && search.trim().length > 0 && (
+          {!exactOptionMatch && search?.trim()?.length > 0 && (
             <Combobox.Option value="$create">+ Create {search}</Combobox.Option>
           )}
           </ScrollArea.Autosize>

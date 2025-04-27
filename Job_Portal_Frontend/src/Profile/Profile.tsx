@@ -1,105 +1,20 @@
-<<<<<<< HEAD
-import { Button, Divider } from '@mantine/core'
-import { IconBriefcase, IconMapPin } from '@tabler/icons-react'
-import React, { useState } from 'react'
-import ExpCard from './ExpCard'
-import CertiCard from './CertiCard'
-
-const Profile = (props: any) => {
-    const skills = props.skills || ['React', 'Spring Boot']; // use default if props.skills is undefined
-    const experience = props.experience || [];
-    const certifications = props.certifications || [];
-    const [edit, setEdit] = useState([]);
-  
-    return (
-      <div className="w-2/3">
-        <div className="relative">
-          <img src="/Icons/Banner.png" alt="" className="rounded-t-2xl" />
-          <img
-            src="/Icons/avatar1.png"
-            alt=""
-            className="rounded-full w-48 h-48 -bottom-1/3 absolute left-3 border-mine-shaft-950 border-8"
-          />
-        </div>
-  
-        <div className="px-3 mt-20">
-          <div className="text-3xl font-semibold flex justify-between">
-            {props.name}{' '}
-            <Button color="bright-sun.4" variant="light">
-              Message
-            </Button>
-          </div>
-          <div className="text-xl flex gap-1 items-center">
-            <IconBriefcase stroke={1.5} className="h-5 w-5" />
-            {props.role} &bull; {props.company}
-          </div>
-          <div className="flex items-center gap-1 text-lg text-mine-shaft-300">
-            <IconMapPin stroke={1.5} className="h-5 w-5" />
-            {props.location}
-          </div>
-        </div>
-  
-        <Divider my={'xl'} mx="xs" />
-  
-        <div className="px-3">
-          <div className="text-2xl font-semibold mb-3">About</div>
-          <div className="text-sm text-mine-shaft-300 text-justify">{props.about}</div>
-        </div>
-  
-        <Divider my="xl" mx="xs" />
-  
-        <div className="px-3">
-          <div className="text-2xl font-semibold mb-3">Skills</div>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill: any, index: any) => (
-              <div
-                key={index}
-                className="bg-bright-sun-300 bg-opacity-15 rounded-3xl text-bright-sun-400 px-3 py-1 text-sm font-medium"
-              >
-                {skill}
-              </div>
-            ))}
-          </div>
-        </div>
-  
-        <Divider my={'xl'} mx="xs" />
-  
-        <div className="px-3">
-          <div className="text-2xl font-semibold mb-5">Experience</div>
-          <div className="flex flex-col gap-8">
-            {experience.map((exp: any, index: any) => (
-              <ExpCard {...exp} key={index} />
-            ))}
-          </div>
-        </div>
-  
-        <Divider my={'xl'} mx="xs" />
-  
-        <div className="px-3">
-          <div className="text-2xl font-semibold mb-5">Certifications</div>
-          <div className="flex flex-col gap-8">
-            {certifications.map((cert: any, index: any) => (
-              <CertiCard {...cert} key={index} />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-export default Profile;  
-=======
 import { ActionIcon, Button, Divider, TagsInput, Textarea } from '@mantine/core'
 import { IconAdjustments, IconBriefcase, IconDeviceFloppy, IconMapPin, IconPencil, IconPlug, IconPlus } from '@tabler/icons-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ExpCard from './ExpCard'
 import CertiCard from './CertiCard'
 import SelectInput from './SelectInput'
 import fields from '../Data/Profile'
 import ExpInput from './ExpInput'
 import CertiInput from './CertiInput'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfile } from '../Services/ProfileService'
+import Info from './Info'
 
 const Profile = (props: any) => {
-  const select = fields;
+const dispatch=useDispatch();
+  const user=useSelector((state:any)=>state.user);
+const profile=useSelector((state:any)=>state.profile);
   const [skills, setSkills] = useState(props.skills);
   const [edit, setEdit] = useState([false, false, false, false, false]);
   const [addexp,setAddExp]=useState(false);
@@ -112,43 +27,47 @@ const Profile = (props: any) => {
     setEdit(newEdit);
 
   }
+  useEffect(()=>{
+    console.log(profile);
+getProfile(user.id).then((data:any)=>
+{
+  dispatch.setProfile(data);
+  console.log(data);
+}).catch((error:any)=>
+{
+ console.log(error);
+});
+},[])
+
+  
 
   return (
     <div className='w-4/5 mx-auto'>
       <div className='relative'>
         <img src="/Icons/Banner.png" alt=""
           className='w-full h-64 object-cover rounded-t-2xl' />
-        <img src="/Icons/avatar1.png" alt="" className='rounded-full w-48 h-48 -bottom-1/3 absolute left-3 border-mine-shaft-950 border-8' />
+        <img src="/Icons/avatar1.png" alt="" className='rounded-full w-48 h-48 -bottom-1/3 
+        absolute left-3 border-mine-shaft-950 border-8' />
 
       </div>
       <div className='px-3 mt-20'>
-        <div className='text-3xl font-semibold flex justify-between'>{props.name} <ActionIcon variant='subtle' size="lg" color='bright-sun.4' onClick={() => handleEdit(0)}> {edit[0] ? <IconDeviceFloppy className='h-4/5 w-4/5 ' /> : <IconPencil className='h-4/5 w-4/5 ' />}</ActionIcon></div>
-        {
-          edit[0] ? <>    <div className='flex gap-10 [&>*]:w-1/2'>
-            <SelectInput {...select[0]} />
-            <SelectInput {...select[1]} />
+       <Info/>
+</div>
 
-          </div>
-            <SelectInput {...select[2]} /> </> : <> <div className='text-xl flex gap-1 items-center '><IconBriefcase stroke={1.5} className='h-5 w-5' />{props.role} &bull; {props.company}</div>
-            <div className='flex items-center gap-1 text-lg text-mine-shaft-300 '>
-              <IconMapPin stroke={1.5} className='h-5 w-5' />{props.location}
-            </div>
-
-          </>
-        }
-
-
-      </div>
+     
 
 
       <Divider my={'xl'} mx="xs" />
       <div className='px-3'>
-        <div className='text-2xl font-semibold mb-3 flex justify-between'>About <ActionIcon variant='subtle' size="lg" color='bright-sun.4' onClick={() => handleEdit(1)}> {edit[1] ? <IconDeviceFloppy className='h-4/5 w-4/5 ' /> : <IconPencil className='h-4/5 w-4/5 ' />}</ActionIcon></div>
+        <div className='text-2xl font-semibold mb-3 flex justify-between'>About 
+          <ActionIcon variant='subtle' size="lg" color='bright-sun.4' onClick={() => handleEdit(1)}> {edit[1] ? <IconDeviceFloppy className='h-4/5 w-4/5 ' />
+           : <IconPencil className='h-4/5 w-4/5 ' />}</ActionIcon></div>
         {
 
-          edit[1] ? <>   <Textarea autosize minRows={3} value={value} onChange={(event) => setValue(event.target.value)} /> </> : <>
+          edit[1] ? <>   <Textarea autosize minRows={3} value={value} 
+          onChange={(event) => setValue(event.target.value)} /> </> : <>
             <div className='text-sm text-mine-shaft-300 text-justify'>
-              {value}
+              {/* {profile.about} */}
             </div>
           </>
 
@@ -163,7 +82,8 @@ const Profile = (props: any) => {
           edit[2] ? <> <TagsInput value={skills} onChange={setSkills} placeholder='Add Skill' splitChars={[',', ' ', ' |']} /></> : <>
             <div className='flex flex-wrap gap-2'>
 
-              {skills.map((skill: any, index: any) =>
+              {
+              profile?.skills?.map((skill: any, index: number) =>
                 <div key={index} className='bg-bright-sun-300 bg-opacity-15 rounded-3xl text-bright-sun-400 px-3 py-1 text-sm font-medium'>{skill}</div>
               )}
 
@@ -182,7 +102,7 @@ const Profile = (props: any) => {
             {edit[3] ? <IconDeviceFloppy className='h-4/5 w-4/5 ' /> : <IconPencil className='h-4/5 w-4/5 ' />}
           </ActionIcon></div></div>
         <div className='flex flex-col gap-8'>
-          {props.experience.map((exp: any, index: any) => <ExpCard {...exp} key={index} edit={edit[3]} />)}
+          {props?.experience?.map((exp: any, index: number) => <ExpCard {...exp} key={index} edit={edit[3]} />)}
           {addexp && <ExpInput setEdit={setAddExp} add/>}
         </div>
 
@@ -197,7 +117,7 @@ const Profile = (props: any) => {
             {edit[4] ? <IconDeviceFloppy className='h-4/5 w-4/5 ' /> : <IconPencil className='h-4/5 w-4/5 ' />}
           </ActionIcon></div></div>
         <div className='flex flex-col gap-8'>
-          {props.certifications.map((cert: any, index: any) =>
+          {props?.certifications?.map((cert: any, index: number) =>
             <CertiCard {...cert} edit={edit[4]} />
           )}
           {
@@ -210,4 +130,3 @@ const Profile = (props: any) => {
 }
 
 export default Profile
->>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
