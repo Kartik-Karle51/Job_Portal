@@ -1,0 +1,11 @@
+const getAllJobs=async()=>{
+
+}
+const getJob=async(id:any)=>{
+    return axios.get('${base_url)get/${id}')
+    .then(result=>result.data).catch(error=>{throw error;});
+
+}
+const applyJob=async(id:any,applicant:any)=>{
+    return axios.post('${base_url}apply/${id}',applicant).then(result=>result.data).catch(error=>{throw error;});
+}
