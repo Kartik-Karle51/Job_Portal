@@ -1,5 +1,6 @@
 package com.Main.Service;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 
 import java.util.List;
@@ -10,10 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
+=======
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.Main.DTO.LoginDTO;
+<<<<<<< HEAD
 import com.Main.DTO.ResponseDTO;
 import com.Main.DTO.UserDTO;
 import com.Main.Entity.OTP;
@@ -27,6 +34,14 @@ import com.Main.Utility.Utilities;
 
 import jakarta.mail.internet.MimeMessage;
 
+=======
+import com.Main.DTO.UserDTO;
+import com.Main.Entity.User;
+import com.Main.Exception.JobPortalException;
+import com.Main.Repository.UserRepository;
+import com.Main.Utility.Utilities;
+
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 @Service(value = "userService")
 public class UserServiceImpl implements UserService{
 
@@ -38,6 +53,7 @@ public class UserServiceImpl implements UserService{
 	private Utilities utilities;
 	
 	@Autowired
+<<<<<<< HEAD
 	private JavaMailSender mailSender;
 	
 	@Autowired
@@ -47,16 +63,25 @@ public class UserServiceImpl implements UserService{
 	private OTPReposiotry otpRepository;
 	
 	@Autowired
+=======
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 	private UserRepository userRepository;
 	
 	@Override
 	public UserDTO registerUser(UserDTO userDTO) throws Exception {
 		Optional<User> optional=userRepository.findByEmail(userDTO.getEmail());
 		if(optional.isPresent())throw new JobPortalException("USER_FOUND");
+<<<<<<< HEAD
 		userDTO.setProfileId(profileService.createProfile(userDTO.getEmail()));		userDTO.setId(utilities.getNextSequence("users"));
 		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		User user=userDTO.toEntity();
 		user=userRepository.save(user);
+=======
+		userDTO.setId(utilities.getNextSequence("users"));
+		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+		User user=userDTO.toEntity();
+		userRepository.save(user);
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 		return user.toDTO();
 	}
 
@@ -68,6 +93,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Boolean sendOtp(String email) throws Exception {
 		 User user=userRepository.findByEmail(email).orElseThrow(()->new JobPortalException("USER_NOT_FOUND"));
          MimeMessage mm=mailSender.createMimeMessage();
@@ -113,5 +139,12 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
+=======
+	public UserDTO getUserByEmail(String email) throws JobPortalException {
+		// TODO Auto-generated method stub
+		return userRepository.findByEmail(email).orElseThrow(() -> new JobPortalException("User Not found")).toDTO();
+	}
+
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 	
 }

@@ -16,6 +16,7 @@ const loginUser=async(login:any)=>
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     const sendOtp=async(email:any)=>
         {
             return axios.post(`${base_url}sendOtp/${email}`, email)
@@ -37,6 +38,9 @@ const loginUser=async(login:any)=>
                     .catch(error=>{throw error;});
                 }
     export {registerUser, loginUser,sendOtp,changePass,verifyOtp};
+=======
+    export {registerUser, loginUser};
+>>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
 =======
     export {registerUser, loginUser};
 >>>>>>> 99166604a113c2ad9c6d83b6aed3b7323d6bd303
